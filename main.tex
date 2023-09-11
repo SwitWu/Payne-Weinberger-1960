@@ -1,0 +1,424 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{fixdif}
+\usepackage{enumitem}
+
+\counterwithin{equation}{section}
+\newtheorem*{lemma}{Lemma}
+\newtheoremstyle{remarks}
+                {3pt} % 上方间距
+                {3pt} % 下方间距
+                {\rmfamily} % 主体字体
+                {\parindent} % 缩进长度
+                {\itshape} % 定理头字体
+                {.} % 标点符号
+                { } % 定理头后间距
+                {} % 定理头格式指定
+\theoremstyle{remarks}
+\newtheorem*{remarks}{Remarks}
+
+\renewcommand{\div}{\operatorname{div}}
+\title{An Optimal Poincar\'e Inequality for Convex Domains}
+\author{L. E. Payne \and H. F. Weinberger}
+\date{1960}
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+Let $G$ be a convex $n$-dimensional domain with boundary $C$.
+It is easily seen that the lowest eigenvalue of the free membrane problem
+\begin{equation}\label{eq:1.1}
+  \begin{aligned}
+    \Delta v + \nu v & = 0 \quad \text{in}\ G \\
+    \partial v/\partial n & = 0 \quad \text{on}\ C 
+  \end{aligned}
+\end{equation}
+is zero, the eigenvalue beging any constant.
+
+This corresponds to the fact that the solution of the interior
+Neumann problem
+\begin{equation}\label{eq:1.2}
+  \begin{aligned}
+    & \Delta \varphi = 0 \quad\quad \text{in}\ G \\
+    & \partial\varphi/\partial n \quad \text{given on}\ C
+  \end{aligned}
+\end{equation}
+is only determined to within a constant. The latter is to be fixed by a normalization
+such as
+\begin{equation}\label{eq:1.3}
+  \int_G \varphi \d G = 0. 
+\end{equation}
+
+The authers have previously introduced a method for bounding the pointwise
+value as well as the Dirichlet integral of a solution $\varphi$ of the exterior
+Neumann in terms of a boundary integral of $(\partial\varphi/\partial n)^2$ [3].
+In order to extend this method to the interior Neumann problem one needs
+a lower bound for the second eigenvalue $\mu_2$ of~\eqref{eq:1.1}.
+This eigenvalue is characterized by the minimum principle
+\begin{equation}\label{eq:1.4}
+  \mu_2 = \min_{\int_G u\d G=0} \frac{\int_G |\nabla u|^2 \d G}{\int_G u^2 \d G}.
+\end{equation}
+A lower bound for $\mu_2$ can be used in the interior Neumann problem
+in the following manner (cf.~[3]).
+Let $\vec{f}$ be a vector field which is piecewise continuously differentiable
+throughout $G$ and points outward on $C$, so that
+\begin{equation}\label{eq:1.5}
+  \vec{f}\cdot\vec{n} \geq k > 0 \quad \text{on}\ C.
+\end{equation}
+For example, of $G$ is star-shaped with respect to the origin, we may take $\vec{f}$
+to be the radius vector. By the divergence theorem and the inequality $a^2+b^2\geq 2ab$
+we have, if $\varphi$ is normalized by~\eqref{eq:1.3},
+\begin{equation}\label{eq:1.6}
+  \begin{aligned}
+    \oint_C \varphi^2 \vec{f}\cdot\vec{n} \d C
+    & = \int_G \bigl[\varphi^2\div\vec{f} + 2\varphi \vec{f}\cdot\nabla\varphi\bigr] \d G \\
+    & \leq \int_G \varphi^2 \bigl[\div\vec{f} + |\vec{f}|^2\bigr] \d G
+        + \int_G |\nabla\varphi|^2 \d G \\
+    & \leq \bigl[1+\mu_2^{-1}\max\bigl(\div\vec{f} + |\vec{f}|^2\bigr)\bigr]
+        \int_G |\nabla\varphi|^2 \d G \\
+    & = \bigl[1+\mu_2^{-1}\max\bigl(\div\vec{f}+|\vec{f}|^2\bigr)\bigr]
+        \oint_C \varphi \partial\varphi/\partial n \d C.
+  \end{aligned}
+\end{equation}
+Consequently by Schward's inequality
+\begin{equation}\label{eq:1.7}
+  \oint_C \varphi^2 \vec{f}\cdot\vec{n} \d C
+  \leq \bigl[1 + \mu_2^{-1} \max\bigl(\div\vec{f} + |\vec{f}|^2\bigr)\bigr]^2
+  \oint_C \bigl(\vec{f}\cdot\vec{n}\bigr)^{-1} (\partial\varphi/\partial n)^2 \d C.
+\end{equation}
+
+If $\varGamma$ is a fundamental solution of Laplace's equation with its singularity
+at the interior point $P$, we have
+\begin{equation}\label{eq:1.8}
+  \begin{aligned}
+  |\varphi(P)|
+    & = \biggl|\oint_C (\varGamma \partial\varphi/\partial n - \varphi \partial\varGamma/\partial n)
+        \d C \biggr| \\
+    & \leq \biggl\{ \oint_C \bigl(\vec{f}\cdot\vec{n}\bigr)^{-1}
+        (\partial\varphi/\partial n)^2 \d C \biggr\}^{\frac12}
+        \biggl(\biggl\{\oint_C f\cdot n \varGamma^2 \d C\biggr\}^{\frac12} \\
+    & \quad + \bigl[1+\mu_2^{-1}\max\bigl(\div\vec{f}+|\vec{f}|^2\bigr)\bigr]
+        \biggl\{\oint_C \bigl(\vec{f}\cdot\vec{n}\bigr)^{-1}
+          (\partial\varGamma/\partial n)^2 \d C\biggr\}^{\frac12} \biggr).
+  \end{aligned}
+\end{equation}
+Thus, if a lower bound for $\mu_2$ is known, $\varphi(P)$ may be explicitly
+bounded in terms of the square integral of $\partial\varphi/\partial n$.
+
+These results can be extended to general second order differential equations (cf.~[3]).
+
+In this paper we shall show that for a convex domain $G$ in any number of
+dimensions
+\begin{equation}\label{eq:1.9}
+  \mu_2 \geq \pi^2D^{-2}
+\end{equation}
+where $D$ is the diameter of $G$.
+This is the best bound that can be given in terms of the diameter alone in
+the sense that $\mu_2 D^2$ tends to $\pi^2$ for a parallepiped all
+but one of whose dimensions shrink to zero.
+
+The inequality~\eqref{eq:1.9} is in general false for non-convex domains.
+In fact, for a sequence of domains which tends to two disjoint subdomains,
+$\mu_2$ tends to zero. For the special class of domains $G$ which are
+symmetric about all the coordinate planes of a rectangular coordinate
+system and have the property that the intersection of $G$ with any line in a coordinate
+direction is simply connected, the authors have previously obtained
+an inequality of the form~\eqref{eq:1.9} with~$D$ replaced by the maximum
+length of intersection of $G$ with a line in any coordinate direction [4].
+
+A simple upper bound for $\mu_2$ for any $n$-dimensional domain $G$
+in terms of its volume $V$ is given by the isoperimetric inequality
+\begin{equation}\label{eq:1.10}
+  \mu_2 \leq p_n^2 K_n^{\frac{2}{n}} V^{-\frac{2}{n}},
+\end{equation}
+where $K_n$ is the volume of the unit $n$-sphere and $p_n$
+is the lowest positive root of the equation
+\begin{equation}\label{eq:1.11}
+  p J_{\frac12 n}'(p) - \biggl(\frac12 n - 1\biggr) J_{\frac12 n}(p) = 0.
+\end{equation}
+Equality is attained when $G$ is a sphere.
+
+For $n=2$ this inequality was conjectured by Kornhauser \& Stakgold [2]
+and proved by Szeg\"o [5]. For general $n$ the proof was given by one of
+the authors [6].
+
+The eigenvalue $\mu_2$ itself is of interest in a variety of problems arising
+in mathematical physics.
+In two dimensions it is proportional to the square of the cutoff frequency
+of the lowest $H$-mode of a wave guide [2].
+In three dimensions it is proportional to the lowest resonant frequency
+of an acoustic resonator with perfectly rigid walls.
+It is also inversely proportional to the relaxation time for diffusion
+in a body with perfectly reflecting boundary.
+
+The proof of the lower bound \eqref{eq:1.9} is based upon a lemma
+concerning a class of Sturm-Liouville systems.
+This lemma, which is of some interest in itself, is stated and proved in \S2.
+The inequality~\eqref{eq:1.9} is proved for two dimensions in \S3 and for
+higher dimensions in \S4.
+
+
+\section{A one-dimensional lemma}
+
+In order to prove the lower bound~\eqref{eq:1.9} we require a somewhat stronger
+version of its one-dimensional analogue. It is the following lemma.
+
+\begin{lemma}
+  Let $p(y)$ be a non-negative convex function of $y$ defined on
+  the interval $0\leq y\leq L$; then for any piecewise continuously
+  differentiable fucntion $u(y)$ which satisfies
+  \begin{equation}\label{eq:2.1}
+    \int_0^L p(y)u(y) \d y = 0
+  \end{equation}
+  it follows that
+  \begin{equation}\label{eq:2.2}
+    \int_0^L p(y) [u'(y)]^2 \d y \geq \pi^2L^{-2} \int_0^L p(y) [u(y)]^2 \d y.
+  \end{equation}
+\end{lemma}
+
+\begin{proof}
+  We assume for the moment that $p$ is strictly positive and twice differentiable.
+  Then the function $v$ which minimizes the quotient
+  \begin{equation}\label{eq:2.3}
+    \int_0^L pu'^2 \d y \biggm/ \int_0^L pu^2 \d y
+  \end{equation}
+  among functions $u$ satisfying~\eqref{eq:2.1} must satisfy the Sturm-Liouville system
+  [1, p.~348]
+  \begin{equation}\label{eq:2.4}
+    \begin{aligned}
+      & [pv']' + \lambda pv = 0, \\
+      & v'(0) = v'(L) = 0,
+    \end{aligned}
+  \end{equation}
+  where $\lambda$ is the minimum value of the quotient~\eqref{eq:2.3}.
+  We divide the equation~\eqref{eq:2.4} by $p$, differentiate with respect
+  to $y$, and introduce the new variable
+  \begin{equation}\label{eq:2.5}
+    w = v' p^{\frac12}.
+  \end{equation}
+  The function $w$ satisfies the Sturm-Liouville system
+  \begin{equation}\label{eq:2.6}
+    \begin{aligned}
+      & w'' + \biggl[\frac12 \frac{p''}{p} - \frac34\frac{p'^2}{p^2}\biggr]w + \lambda w = 0, \\
+      & w(0) = w(L) = 0.
+    \end{aligned}
+  \end{equation}
+  Because of the convexity of $p$ the term in square brackets is non-positive.
+  Hence, multiplying~\eqref{eq:2.6} by $w$ and integrating by parts, we obtain
+  \begin{equation}\label{eq:2.7}
+    \lambda \geq \frac{\int_0^L w'^2 \d y}{\int_0^L w^2 \d y}.
+  \end{equation}
+  Since $w(0)=w(L)=0$ the quotient on the right of~\eqref{eq:2.7} is bounded
+  below by the first eigenvalue of the vibrating string with fixed ends. Thus
+  \begin{equation}\label{eq:2.8}
+    \lambda \geq \pi^2 L^{-2}.
+  \end{equation}
+  Since $\lambda$ is the minimum of the quotient~\eqref{eq:2.3},
+  \eqref{eq:2.2} is proved when $p$ is strictly positive and twice differentiable.
+
+  If $\tilde{u}$ is any function defined on the interval $0\leq y\leq L$,
+  the function
+  \begin{equation}\label{eq:2.9}
+    u(y) = \tilde{u}(y) - \biggl[\int_0^L p \d y\biggr]^{-1} \int_0^L p\tilde{u} \d y
+  \end{equation}
+  will satisfy~\eqref{eq:2.1}. Hence~\eqref{eq:2.2} implies
+  \begin{equation}\label{eq:2.10}
+    \int_0^L p\tilde{u}'^2 \d y \geq \pi^2 L^{-2} 
+    \biggl\{\int_0^L p\tilde{u}^2 \d y - \biggl[\int_0^L p \d y\biggr]^{-1}
+      \biggl[\int_0^L p\tilde{u} \d y\biggr]^2\biggr\}.
+  \end{equation}
+  Clearly~\eqref{eq:2.10} is valid for the uniform limit of admissible
+  functions $p$. In particular, then, $p$ may be any non-negative convex function of $y$.
+  Thus the lemma is proved.
+\end{proof}
+
+\begin{remarks}
+  \begin{enumerate}[label = \arabic*.]
+    \item The convexity of $p$ was used only to show that the square bracket
+      in~\eqref{eq:2.6} is non-negative. For this purpose it is sufficient
+      to assume that $p^{-\frac12}$ is a concave function of $y$.
+      Therefore the lemma actually holds under this weaker condition.
+    \item By the minimax theorem [1, p.~352] we can show that if $p^{-\frac12}$
+      is a concave function of $y$, the eigenvalues of the Sturm-Liouville
+      system~\eqref{eq:2.4} satisfy the inequality
+      \begin{equation}\label{eq:2.11}
+        \lambda_k \geq (k-1)^2 \pi^2 L^{-2},\qquad k=1,2,\ldots.
+      \end{equation}
+    \item Equality in \eqref{eq:2.11} is obtained if and only if $p^{-\frac12}$
+      is linear in $y$. If $p$ is assumed convex, it must then be constant.
+  \end{enumerate}
+\end{remarks}
+
+
+\section{The two-dimensional case}
+
+Let $G$ be a convex plane domain with boundary $C$.
+Let $\mu_2$ be defined as the infimum\footnote{If the boundary
+$C$ is smooth so that the problem \eqref{eq:1.1} possesses eigenvalues,
+$\mu_2$ is the second eigenvalue of~\eqref{eq:1.1}.}
+of the quotient
+\begin{equation}\label{eq:3.1}
+  \int_G |\nabla u|^2 \d G \biggm/ \int_G u^2 \d G
+\end{equation}
+among functions which have bounded second derivatives in $G$ and satisfy
+\begin{equation}\label{eq:3.2}
+  \int_G u \d G = 0.
+\end{equation}
+
+Let $u$ be such a function. Consider the set of lines through the centroid
+of $G$. It follows from continuity that at least one such line divides $G$
+into two convex subdomains of equal area over each of which the integral of~$u$
+vanishes. We now divide each of these subdomains into two more convex subdomains
+of equal area over each of which the integral of $u$ vanishes.
+
+Continuing this process, we arrive after a finite number of steps at a division
+of $G$ into convex subdomains $G_\nu$ of arbitrary small equal areas $A_\nu$.
+Furthermore,
+\begin{equation}\label{eq:3.3}
+  \int_{G_\nu} u \d G = 0
+\end{equation}
+on each $G_\nu$.
+
+Let $\varrho_\nu$ be the radius of the largest circle contained in $G_\nu$.
+Then clearly
+\begin{equation}\label{eq:3.4}
+  A_\nu \geq \pi \varrho_\nu^2.
+\end{equation}
+Hence, if $A_\nu$ is sufficiently small, the width $\varrho_\nu$ of $G$
+is less than a preassigned $\varepsilon$:
+\begin{equation}\label{eq:3.5}
+  \varrho_\nu \leq \varepsilon.
+\end{equation}
+This means that $G_\nu$ is contained between two parallel lines at distance $\varepsilon$.
+We introduce a rectangular coordinate system with $x_2$-axis along one of these lines
+and the $x_1$-axis tangent to one end of $G_\nu$.
+Let $L_\nu$ be the length of the projection of $G_\nu$ on the $x_2$-axis.
+Clearly, $L_\nu\leq D$. Let $p(y)$ be the length of the intersection
+of $G_\nu$ with the line $x_2=y$. Then $p(y)\leq\varepsilon$.
+Because of the convexity of $G_\nu$, $p(y)$ is convex in $y$.
+
+Let $M$ be a bound for the absolute values of $u$ and its first and second
+derivatives. Then by the mean value theorem
+\begin{equation}\label{eq:3.6}
+  \biggl|\int_{G_\nu} \biggl(\frac{\partial u}{\partial x_2}\biggr)^2 \d G
+  - \int_0^{L_\nu} p(y) [u(0,y)']^2 \d y \biggr|
+  \leq 2M^2 A_{\nu} \varepsilon,
+\end{equation}
+\begin{equation}\label{eq:3.7}
+  \biggl|\int_{G_\nu} u^2 \d G - \int_0^{L_\nu} p(y) [u(0,y)]^2 \d y\biggr|
+  \leq 2M^2 A_\nu \varepsilon,
+\end{equation}
+and
+\begin{equation}\label{eq:3.8}
+  \biggl|\int_{G_\nu} u \d G - \int_0^{L_\nu} p(y) u(0,y) \d y\biggr|
+  \leq M A_\nu \varepsilon.
+\end{equation}
+
+Applying the inequality~\eqref{eq:2.10} of the lemma, we find, using~\eqref{eq:3.3}
+and $L_\nu\leq D$, that
+\begin{equation}\label{eq:3.9}
+  \begin{aligned}
+    \int_{G_\nu} |\nabla u|^2 \d G
+    & \geq \int_{G_\nu} \biggl(\frac{\partial u}{\partial x_2}\biggr)^2 \d G \\
+    & \geq \pi^2 D^{-2} \int_{G_\nu} u^2 \d G
+        - 2M^2 \bigl(1+\pi^2 D^{-2} (1+\frac12 \varepsilon)\bigr) A_\nu \varepsilon.
+  \end{aligned}
+\end{equation}
+
+We sum these inequalities over all the subdomains $G_\nu$.
+The sum of the $A_\nu$ is the area of $G$. Since $\varepsilon$
+is arbitrarily small, we obtain the inequality
+\begin{equation}\label{eq:3.10}
+  \int_G |\nabla u|^2 \d G \geq \pi^2 D^{-2} \int_G u^2 \d G.
+\end{equation}
+Since $u$ is any function with bounded second derivatives satisfying~\eqref{eq:3.2},
+we have, by definition,
+\begin{equation}\label{eq:3.11}
+  \mu_2 \geq \pi^2 D^{-2}.
+\end{equation}
+
+
+\section{The $n$-dimensional case}
+
+Let $G$ be a convex $n$-dimensional domain with boundary $C$ ($n\geq 3$).
+We again define $\mu_2$ as the infimum of the Rayleigh quotient~\eqref{eq:3.1}
+among fucntions $u$ having bounded second derivatives in $G$ and satisfying
+the conditions~\eqref{eq:3.2}\footnote{If the boundary $C$ is smooth so that
+the problem~\eqref{eq:1.1} possesses eigenvalues, $\mu_2$ is the second
+eigenvalue of~\eqref{eq:1.1}.}.
+
+Let $u$ be such a function. We consider the set of $(n-1)$-planes of the form
+$ax_{n-1}+bx_n = c$ passing through the centroid of $G$. By continuity we find
+that at least one of these planes divides $G$ into two subdomains of equal
+$n$-volumes over each of which the integral of $u$ vanishes.
+We divide these subdomains in the same way and continue the process until
+$G$ is divided into subdomains $G_\nu$ of arbitrarily small $n$-volume $V_\nu^{[n]}$.
+If $\varrho_\nu$ is the radius of the largest inscribed $n$-sphere, we have
+\begin{equation}\label{eq:4.1}
+  V_\nu^{[n]} \geq K_n \varrho_\nu^n
+\end{equation}
+where $K_n$ is the volume of the unit $n$-sphere. Hence, by a sufficiently
+large number of subdivisions, we can make $\varrho_\nu$ less than a preassigned
+$\varepsilon$. In a particular $G_\nu$ we introduce new rectangular coordinates
+with the $x_1$-axis normal to these planes. We proceed to subdivide $G_\nu$
+by means of planes of the form $ax_{n-1}+bx_n = c$ into subdomains on each of
+which the integral of $u$ vanishes. We make these dividing planes pass through
+the centroid of the projections on $x_1=0$ of the domains being divided.
+After a finite number of such divisions we obtain subdomains $G_\nu'$
+whise projections on $x_1=0$ have arbitrarily small $n-1$ volumes $V_\nu^{[n-1]}$.
+It follows as before that if $V_\nu^{[n-1]}$ is sufficiently small,
+the projection of $G_\nu'$ on $x_1=0$ lies between two parallel $(n-2)$-planes
+at distance at most $\varepsilon$. We keep the $x_1$-direction fixed and choose
+the $x_2$-direction of a new rectangular coordinate system in $G_\nu'$
+perpendicular to these planes.
+
+If $n>3$ we divide each $G_\nu'$ further by means of planes $ax_{n-1}+bx_n = c$
+passing through the centroid of the projections on $x_1=x_2=0$
+of $G_\nu'$ and of the succeeding domains.
+
+In this way we eventually obtain a subdivision of $G$ into a finite number
+of convex subdomains $G_\nu''$ over each of which the integral of $u$ vanishes.
+Furthermore, each $G_\nu''$ is contained in a parallelepiped of the form
+\begin{equation}\label{eq:4.2}
+  \begin{aligned}
+    & 0\leq x_i \leq\varepsilon, \qquad i=1,2,\ldots,n-1 \\
+    & 0\leq x_n \leq L_\nu
+  \end{aligned}
+\end{equation}
+with respect to suitable rectangular coordinates.
+
+Let $p(y)$ be the $n-1$ volume of the intersection of $G_\nu''$
+with $x_n=y$. Then $p(y)$ is convex because of the convexity of $G_\nu''$,
+and $p(y)\leq \varepsilon^{n-1}$ by~\eqref{eq:4.2}.
+
+The inequality
+\begin{equation}\label{eq:4.3}
+  \mu_2 \geq \pi^2 D^{-2}
+\end{equation}
+is now derived exactly as in \S3.
+
+{\small This research was supported in part by the United States Air Force
+through the Air Force Office of Scientific Research of the Air Research
+and Development Command under Contract No.~49(638)-228.}
+
+
+\begin{thebibliography}{6}
+  \bibitem{1} Courant, R., \& D. Hilbert: Methoden der Mathematischen Physik,
+    vol.~1. Berlin: Springer 1931.
+  \bibitem{2} Kornhauser, E. T., \& I. Stakgold: A Variational Theorem for
+    $\nabla^2 u+\lambda u = 0$ and its Applications. J. Math.~Phys. 31, 45--54 (1952).
+    (See also P\'olya, G.: Remarks on the Foregoing Paper. J. Math.~Phys. 31, 55--57 (1952).)
+  \bibitem{3} Payne, L. E., \& H. F. Weinberger: New Bounds for Solutions of Second
+    Order Elliptic Partial Differential Equations. Pac.~J. of Math. 8, 551--573 (1958).
+  \bibitem{4} Payne, L. E., \& H. F. Weinberger: Lower Bounds for Vibration Frequencies
+    of Elastically Supported Membranes and Plates. J. Soc.~Indust.~Appl.~Math. 5, 171--182 (1957).
+  \bibitem{5} Szeg\"o, G.: Inequalities for Certain Membranes of a Given Area.
+    J. Rational Mech.\ Anal. 3, 343--356 (1954).
+  \bibitem{6} Weinberger, H. F.: An Isoperimetric Inequality for the $N$-dimensional
+    Free Membrane Problem. J. Rational Mech.\ Anal. 5, 633--636 (1956).
+\end{thebibliography}
+\end{document}
